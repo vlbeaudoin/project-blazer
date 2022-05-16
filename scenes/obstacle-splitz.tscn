@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 37.5, 15.911 )
+
+[node name="obstacle-splitz" type="StaticBody2D"]
+position = Vector2( 549.326, 147.411 )
+
+[node name="SpriteTop" type="Sprite" parent="."]
+position = Vector2( 0, -16 )
+z_index = 1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 32 )
+region_filter_clip = true
+
+[node name="SpriteBottom" type="Sprite" parent="."]
+position = Vector2( 0, 16 )
+z_index = -1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 64, 32 )
+region_filter_clip = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.825989, 16 )
+shape = SubResource( 1 )
