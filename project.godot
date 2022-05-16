@@ -8,10 +8,39 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Tile",
+"class": "Building",
+"language": "GDScript",
+"path": "res://resources/Building.gd"
+}, {
+"base": "Resource",
+"class": "Cell",
+"language": "GDScript",
+"path": "res://resources/Cell.gd"
+}, {
+"base": "Tile",
+"class": "Floor",
+"language": "GDScript",
+"path": "res://resources/Floor.gd"
+}, {
+"base": "Resource",
+"class": "Tile",
+"language": "GDScript",
+"path": "res://resources/Tile.gd"
+} ]
+_global_script_class_icons={
+"Building": "",
+"Cell": "",
+"Floor": "",
+"Tile": ""
+}
+
 [application]
 
 config/name="project_blazer"
-config/icon="res://icon.png"
+run/main_scene="res://scenes/menu.tscn"
+config/icon="res://art/godot/icon.png"
 
 [autoload]
 
@@ -63,6 +92,31 @@ attack={
 debug={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777246,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+select_1={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":49,"unicode":0,"echo":false,"script":null)
+ ]
+}
+select_2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":50,"unicode":0,"echo":false,"script":null)
+ ]
+}
+restart={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+menu={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 
