@@ -2,7 +2,9 @@ extends Node
 
 const DEBUG = true
 var game_mode: int = GameModes.BUILD
-var current_level: NodePath
+
+const menu_level: String = "res://scenes/menu.tscn"
+var current_level: String = menu_level
 
 enum GameModes {
 	BUILD,
@@ -15,10 +17,14 @@ func _process(delta):
 func process_input():
 	if Input.is_action_just_pressed("restart"):
 		handle_restart()
+		
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
 
 func handle_restart():
-	print("[I] Restarting level")
-	Util.change_scene(Util.current_level)
+	if Util.current_level != Util.menu_level:
+		print("[I] Restarting level")
+		Util.change_scene(Util.current_level)
 
 func change_scene(scene_path: String):
 	print("[I] Changing scene to: %s" % scene_path)
