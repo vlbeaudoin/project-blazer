@@ -23,6 +23,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+level_path = "res://scenes/levels/level0.tscn"
 
 [node name="btn_level1" type="Button" parent="levels"]
 margin_left = 203.354
@@ -32,3 +33,4 @@ margin_bottom = 180.543
 text = "level1"
 script = ExtResource( 1 )
 level_name = "level1"
+level_path = "res://scenes/levels/level1.tscn"

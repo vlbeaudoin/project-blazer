@@ -13,6 +13,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+level_path = "res://scenes/levels/level0.tscn"
 
 [node name="hud" type="CanvasLayer" parent="."]
 

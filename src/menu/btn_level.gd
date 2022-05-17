@@ -2,7 +2,8 @@ extends Button
 
 ## VARS
 export(String) var level_name = "level0"
-onready var level_path = "res://scenes/levels/%s.tscn" % level_name
+#onready var level_path = "res://scenes/levels/%s.tscn" % level_name
+export(String) var level_path
 
 
 ## FUNCS
@@ -10,6 +11,7 @@ onready var level_path = "res://scenes/levels/%s.tscn" % level_name
 
 ## SIGNALS
 func on_button_down():
+	Util.current_level = level_path
 	Util.change_scene(level_path)
 
 ## SETGET

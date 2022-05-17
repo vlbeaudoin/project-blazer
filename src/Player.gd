@@ -104,7 +104,13 @@ func process_debug_label():
 		Input: %s
 		is_looking_left: %s
 		Attacking: %s
-		""" % [str(velocity), attributes, str(state), str(input), is_looking_left, is_attacking]
+		
+		Current level: %s
+		Game mode: %s
+		""" % [str(velocity), attributes, str(state), 
+		str(input), is_looking_left, is_attacking,
+		Util.current_level, Util.game_mode
+		]
 		)
 
 func process_attack():

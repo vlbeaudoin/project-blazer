@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://art/Wild Animals/Wolf/Wolf_Run.png" type="Texture" id=1]
+[ext_resource path="res://actors/mob/mob.gd" type="Script" id=2]
+[ext_resource path="res://fonts/open-sans.regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://art/ui/health-bar-over.png" type="Texture" id=6]
+[ext_resource path="res://art/ui/health-bar-progress.png" type="Texture" id=7]
+[ext_resource path="res://art/ui/health-bar-under.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "run"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 8.00936
+height = 12.5129
+
+[sub_resource type="DynamicFont" id=3]
+size = 6
+font_data = ExtResource( 4 )
+
+[node name="mob_wolf" type="KinematicBody2D"]
+position = Vector2( 0, -0.052557 )
+collision_layer = 64
+collision_mask = 2147484944
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+mob_type = "wolf"
+max_health = 5
+health = 5
+speed = 35.0
+
+[node name="mob_navigation" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -2.65199, -2.6727 )
+scale = Vector2( 0.459893, 0.459893 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 6
+region_rect = Rect2( 3, 8, 57, 28 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "run"
+anims/run = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 12.4355, 8.89085 )
+rotation = 1.57079
+shape = SubResource( 2 )
+
+[node name="health_bar_old" type="ProgressBar" parent="."]
+visible = false
+margin_left = -18.652
+margin_top = -17.5203
+margin_right = -2.65199
+margin_bottom = -8.52025
+custom_fonts/font = SubResource( 3 )
+step = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health_bar" type="TextureProgress" parent="."]
+margin_left = 3.09674
+margin_top = -3.94859
+margin_right = 31.0968
+margin_bottom = 2.05141
+rect_scale = Vector2( 0.6, 0.6 )
+value = 50.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 6 )
+texture_progress = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
