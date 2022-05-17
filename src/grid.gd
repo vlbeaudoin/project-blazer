@@ -35,7 +35,7 @@ func handle_building():
 		if Input.is_action_pressed("click") \
 		and not play_area.get_cellv(selected_cell.coordinates) == -1 \
 		and not old_cell.id == new_cell.id:
-			print("Old cell: [{old}]\nNew cell: [{new}]".format({"old":old_cell, "new":new_cell}))
+			#print("Old cell: [{old}]\nNew cell: [{new}]".format({"old":old_cell, "new":new_cell}))
 		
 			match new_cell.id:
 				Cell.Cells.EMPTY:
@@ -50,9 +50,15 @@ func handle_building():
 
 func handle_selected_building():
 	if Input.is_action_just_pressed("select_1"):
-		selected_building = Cell.Cells.CLOUDS
+			selected_building = Cell.Cells.CLOUDS
+			print("[I] Selected: Cell.Cells.CLOUDS")
+			# TODO change selection to empty hand (select instead of build)
+			# if the player is trying to set the selection to the same thing
+			# ex.: `if selected_building != Cell.Cells.ClOUDS:` (making sure selected_building exists)
+			
 	elif Input.is_action_just_pressed("select_2"):
 		selected_building = Cell.Cells.EMPTY
+		print("[I] Selected: Cell.Cells.EMPTY")
 
 func fill_map(source_map: TileMap, destination_map: TileMap):
 	while !dynamic_background_filled:
