@@ -9,7 +9,7 @@
 [ext_resource path="res://scenes/obstacles/obstacle-splitz.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/spawns/mob_spawn.tscn" type="PackedScene" id=8]
 
-[node name="level1" type="Node2D"]
+[node name="main" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -32,6 +32,8 @@ script = ExtResource( 6 )
 position = Vector2( 211.918, 147.492 )
 z_index = 1
 
+[node name="mobs" type="Node2D" parent="actors"]
+
 [node name="obstacles" type="Node2D" parent="."]
 
 [node name="obstacle-splitz" parent="obstacles" instance=ExtResource( 7 )]
@@ -52,8 +54,45 @@ scale = Vector2( 0.56, 1.24 )
 
 [node name="spawns" type="Node2D" parent="."]
 
-[node name="mob_spawn" parent="spawns" instance=ExtResource( 8 )]
-position = Vector2( 123, 53 )
+[node name="mob_spawn_bears" parent="spawns" instance=ExtResource( 8 )]
+position = Vector2( 432, 32 )
+waves_array = [ {
+"amount": 3,
+"interval": 1,
+"path": "res://actors/mob/mob_bear.tscn"
+} ]
+
+[node name="mob_spawn_boars" parent="spawns" instance=ExtResource( 8 )]
+position = Vector2( 432, 64 )
+waves_array = [ {
+"amount": 3,
+"interval": 1,
+"path": "res://actors/mob/mob_boar.tscn"
+} ]
+
+[node name="mob_spawn_deer" parent="spawns" instance=ExtResource( 8 )]
+position = Vector2( 432, 96 )
+waves_array = [ {
+"amount": 3,
+"interval": 1,
+"path": "res://actors/mob/mob_deer.tscn"
+} ]
+
+[node name="mob_spawn_fox" parent="spawns" instance=ExtResource( 8 )]
+position = Vector2( 432, 128 )
+waves_array = [ {
+"amount": 3,
+"interval": 1,
+"path": "res://actors/mob/mob_fox.tscn"
+} ]
+
+[node name="mob_spawn_wolf" parent="spawns" instance=ExtResource( 8 )]
+position = Vector2( 432, 161 )
+waves_array = [ {
+"amount": 3,
+"interval": 1,
+"path": "res://actors/mob/mob_wolf.tscn"
+} ]
 
 [node name="grid" type="Node2D" parent="."]
 z_index = -10

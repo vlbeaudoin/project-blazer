@@ -7,25 +7,44 @@ var spawn_timer = Timer.new()
 var current_mob
 var current_wave_clump: WaveClump
 
-export(Array) var waves
+#onready var wave_dict = {
+#	"path": "res://actors/mob/mob_boar.tscn",
+#	"amount": 5,
+#	"interval": 1
+#}
 
 #onready var wave = Wave.new()
 
-#onready var main = $"/root/main"
+onready var main = $"/root/main"
+onready var mobs = $"/root/main/actors/mobs"
 #onready var main = get_tree().get_nodes_in_group("level")[0]
 #onready var main = get_node(Util.current_level)
 
 #onready var zone_path = $"/root/main/grid/play_area" as TileMap
+onready var play_area = $"/root/main/grid/play_area" as TileMap
 #onready var util = $"/root/main/util"
 #onready var label_wave = $"/root/main/ColorRect2/label_wave" as Label
 
-onready var mob_boar = "res://actors/mob/mob_boar.tscn"
-onready var mob_fox = "res://actors/mob/mob_fox.tscn"
-onready var mob_wolf = "res://actors/mob/mob_wolf.tscn"
-onready var mob_deer = "res://actors/mob/mob_deer.tscn"
-onready var mob_bear = "res://actors/mob/mob_bear.tscn"
-onready var mob_boss = "res://actors/mob/mob_boss.tscn"
+var mob_boar = "res://actors/mob/mob_boar.tscn"
+var mob_fox = "res://actors/mob/mob_fox.tscn"
+var mob_wolf = "res://actors/mob/mob_wolf.tscn"
+var mob_deer = "res://actors/mob/mob_deer.tscn"
+var mob_bear = "res://actors/mob/mob_bear.tscn"
+var mob_boss = "res://actors/mob/mob_boss.tscn"
 
+export(Array, Dictionary) var waves_array = [
+	{
+		"path": mob_boar,
+		"amount": 5,
+		"interval": 0.6
+	},
+	{
+		"path": mob_fox,
+		"amount": 3,
+		"interval": 0.5
+	}]
+	
+export(Array) var waves
 #onready var victory_popup = $"/root/main/CanvasLayer/victory_popup" as Popup
 
 signal wave_ended
@@ -39,7 +58,7 @@ func start_wave():
 		
 		if spawn_timer.is_stopped():
 			spawn_timer.start(current_wave_clump.spawn_speed)
-			Util.enter_state(Util.GameModes.WAVE)
+			#Util.enter_state(Util.GameModes.WAVE)
 	else:
 		return
 	
@@ -53,10 +72,8 @@ func spawn_mob():
 		
 		if current_wave_clump and current_mob:
 			var new_mob = current_mob.instance()
-#			main.add_child_below_node(self, new_mob)
-			add_child_below_node(self, new_mob)
-#			new_mob.position = self.position - Vector2(zone_path.cell_size.x / 2, zone_path.cell_size.y / 2)
-			new_mob.position = self.position
+			mobs.add_child(new_mob)
+			new_mob.position = self.position - Vector2(play_area.cell_size.x / 2, play_area.cell_size.y / 2)
 			current_wave_clump.spawn_amount -= 1
 		
 		if current_wave_clump.spawn_amount == 0: 
@@ -93,7 +110,16 @@ spawn_speed: float = 1.5, last_wave := false):
 	if not current_wave_clump:
 		current_wave_clump = p_wave.wave_clumps[0]
 	
-	
+
+func initialize_waves_from_array(w: Array):
+	var wave = Wave.new()
+	#wave.description = 
+	for c in w:
+		#print(c)
+		add_wave_clump(wave, c["path"], c["amount"], c["interval"])
+	waves.append(wave as Wave)
+		
+
 func initialize_wave():
 	var wave = Wave.new()
 	wave.description = "Can’t we all just be friends?"
@@ -252,5 +278,6 @@ func _ready():
 	add_child(spawn_timer)
 	spawn_timer.connect("timeout", self, "_on_spawn_timer_timeout")
 	#initialize_waves()
-	initialize_wave()
+	#initialize_wave()
+	initialize_waves_from_array(waves_array)
 	start_wave()
