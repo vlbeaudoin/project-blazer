@@ -11,7 +11,7 @@ enum GameModes {
 	WAVE
 }
 
-func _process(delta):
+func _process(_delta):
 	process_input()
 
 func process_input():
