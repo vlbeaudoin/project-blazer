@@ -7,7 +7,7 @@ String that points to a scene that acts as a game level.
 
 example: "res://scenes/levels/level0.tscn"
 """
-export var level_path: String
+export(String) var level_path
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +16,6 @@ func _ready():
 
 func _process(_delta):
 	process_input()
-
 
 func process_input():
 	if Input.is_action_just_released("debug"):
