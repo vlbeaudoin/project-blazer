@@ -26,7 +26,7 @@ export var attributes = {
 	"stamina" : 5,
 	"luck" : 5,
 	"speed" : 120.0,
-	"friction" : 0.15,
+	"friction" : 0.25,
 	"acceleration" : 0.1,
 	"max_velocity" : 300
 	}
