@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/player_cat.gd" type="Script" id=1]
+[ext_resource path="res://art/kevin_mushroom_cat/mush-cat-sprite.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 13.3333
+height = 6.66663
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 240, 136 )
+scale = Vector2( 0.6, 0.6 )
+script = ExtResource( 1 )
+attributes = {
+"acceleration": 0.1,
+"friction": 0.25,
+"luck": 5,
+"max_velocity": 300,
+"skill": 5,
+"speed": 100.0,
+"stamina": 5
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+process_mode = 0
+smoothing_enabled = true
+smoothing_speed = 10.0
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3.33337 )
+rotation = 1.5708
+shape = SubResource( 4 )

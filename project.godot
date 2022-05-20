@@ -73,8 +73,8 @@ Util="*res://src/singletons/Util.gd"
 
 [display]
 
-window/size/width=480
-window/size/height=270
+window/size/width=320
+window/size/height=180
 window/size/test_width=1920
 window/size/test_height=1080
 window/vsync/use_vsync=false

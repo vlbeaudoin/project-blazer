@@ -25,12 +25,12 @@ onready var play_area = $"/root/main/grid/play_area" as TileMap
 #onready var util = $"/root/main/util"
 #onready var label_wave = $"/root/main/ColorRect2/label_wave" as Label
 
-var mob_boar = "res://actors/mob/mob_boar.tscn"
-var mob_fox = "res://actors/mob/mob_fox.tscn"
-var mob_wolf = "res://actors/mob/mob_wolf.tscn"
-var mob_deer = "res://actors/mob/mob_deer.tscn"
-var mob_bear = "res://actors/mob/mob_bear.tscn"
-var mob_boss = "res://actors/mob/mob_boss.tscn"
+var mob_boar = "res://scenes/actors/mobs/mob_boar.tscn"
+var mob_fox = "res://scenes/actors/mobs/mob_fox.tscn"
+var mob_wolf = "res://scenes/actors/mobs/mob_wolf.tscn"
+var mob_deer = "res://scenes/actors/mobs/mob_deer.tscn"
+var mob_bear = "res://scenes/actors/mobs/mob_bear.tscn"
+var mob_boss = "res://scenes/actors/mobs/mob_boss.tscn"
 
 export(Array, Dictionary) var waves_array = [
 	{

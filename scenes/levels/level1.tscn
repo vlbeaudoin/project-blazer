@@ -59,7 +59,7 @@ position = Vector2( 432, 32 )
 waves_array = [ {
 "amount": 3,
 "interval": 1,
-"path": "res://actors/mob/mob_bear.tscn"
+"path": "res://scenes/actors/mobs/mob_bear.tscn"
 } ]
 
 [node name="mob_spawn_boars" parent="spawns" instance=ExtResource( 8 )]
@@ -67,7 +67,7 @@ position = Vector2( 432, 64 )
 waves_array = [ {
 "amount": 3,
 "interval": 1,
-"path": "res://actors/mob/mob_boar.tscn"
+"path": "res://scenes/actors/mobs/mob_boar.tscn"
 } ]
 
 [node name="mob_spawn_deer" parent="spawns" instance=ExtResource( 8 )]
@@ -75,7 +75,7 @@ position = Vector2( 432, 96 )
 waves_array = [ {
 "amount": 3,
 "interval": 1,
-"path": "res://actors/mob/mob_deer.tscn"
+"path": "res://scenes/actors/mobs/mob_deer.tscn"
 } ]
 
 [node name="mob_spawn_fox" parent="spawns" instance=ExtResource( 8 )]
@@ -83,7 +83,7 @@ position = Vector2( 432, 128 )
 waves_array = [ {
 "amount": 3,
 "interval": 1,
-"path": "res://actors/mob/mob_fox.tscn"
+"path": "res://scenes/actors/mobs/mob_fox.tscn"
 } ]
 
 [node name="mob_spawn_wolf" parent="spawns" instance=ExtResource( 8 )]
@@ -91,7 +91,7 @@ position = Vector2( 432, 161 )
 waves_array = [ {
 "amount": 3,
 "interval": 1,
-"path": "res://actors/mob/mob_wolf.tscn"
+"path": "res://scenes/actors/mobs/mob_wolf.tscn"
 } ]
 
 [node name="mob_spawn_all" parent="spawns" instance=ExtResource( 8 )]
@@ -99,23 +99,23 @@ position = Vector2( 432, 180 )
 waves_array = [ {
 "amount": 2,
 "interval": 0.8,
-"path": "res://actors/mob/mob_boar.tscn"
+"path": "res://scenes/actors/mobs/mob_boar.tscn"
 }, {
 "amount": 2,
 "interval": 0.5,
-"path": "res://actors/mob/mob_fox.tscn"
+"path": "res://scenes/actors/mobs/mob_fox.tscn"
 }, {
 "amount": 2,
 "interval": 0.5,
-"path": "res://actors/mob/mob_deer.tscn"
+"path": "res://scenes/actors/mobs/mob_deer.tscn"
 }, {
 "amount": 2,
 "interval": 0.8,
-"path": "res://actors/mob/mob_wolf.tscn"
+"path": "res://scenes/actors/mobs/mob_wolf.tscn"
 }, {
 "amount": 2,
 "interval": 0.5,
-"path": "res://actors/mob/mob_bear.tscn"
+"path": "res://scenes/actors/mobs/mob_bear.tscn"
 } ]
 
 [node name="grid" type="Node2D" parent="."]
