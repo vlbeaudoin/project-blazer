@@ -15,3 +15,5 @@ Assets used during development:
 - [Simple Cooldown Timer](https://opengameart.org/content/simple-cooldown-timer) by NotOnFire
 
 - [Paid RPG Pixel Art Assets 2](https://edslashem.itch.io/rpg-asset-pack-2) by EDslashEM
+
+- Mushroom cat by [Kevin](https://www.instagram.com/pickled_hatred/)
