@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://art/Wild Animals/Boar/Boar_Run.png" type="Texture" id=1]
-[ext_resource path="res://actors/mob/mob.gd" type="Script" id=2]
+[ext_resource path="res://art/Wild Animals/Deer/Deer_Run.png" type="Texture" id=1]
+[ext_resource path="res://src/mobs/mob.gd" type="Script" id=2]
 [ext_resource path="res://fonts/open-sans.regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://art/ui/health-bar-over.png" type="Texture" id=6]
 [ext_resource path="res://art/ui/health-bar-progress.png" type="Texture" id=7]
@@ -25,14 +25,14 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 7.56517
-height = 10.452
+radius = 13.3315
+height = 11.6661
 
 [sub_resource type="DynamicFont" id=3]
 size = 6
 font_data = ExtResource( 4 )
 
-[node name="mob_boar" type="KinematicBody2D"]
+[node name="mob_deer" type="KinematicBody2D"]
 position = Vector2( 0, -0.052557 )
 collision_layer = 64
 collision_mask = 2147484944
@@ -40,18 +40,17 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-mob_type = "boar"
-health = 3
-speed = 25.0
+mob_type = "deer"
+max_health = 6
+health = 6
 
 [node name="mob_navigation" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 8.07433, 5.1013 )
-scale = Vector2( 0.460773, 0.460773 )
+position = Vector2( 4.58102, 4.804 )
+scale = Vector2( 0.521105, 0.521105 )
 texture = ExtResource( 1 )
 hframes = 6
-frame = 1
 region_rect = Rect2( 3, 8, 57, 28 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
@@ -59,8 +58,8 @@ autoplay = "run"
 anims/run = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 8.01266, 7.77502 )
-rotation = 1.57079
+position = Vector2( 6.51348, 5.84455 )
+rotation = 1.55241
 shape = SubResource( 2 )
 
 [node name="health_bar_old" type="ProgressBar" parent="."]
@@ -76,10 +75,10 @@ __meta__ = {
 }
 
 [node name="health_bar" type="TextureProgress" parent="."]
-margin_left = -0.799931
-margin_top = -4.11417
-margin_right = 27.2001
-margin_bottom = 1.88583
+margin_left = -8.1015
+margin_top = -13.9475
+margin_right = 19.8986
+margin_bottom = -7.94753
 rect_scale = Vector2( 0.6, 0.6 )
 value = 50.0
 texture_under = ExtResource( 8 )

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://actors/mob/mob.gd" type="Script" id=2]
+[ext_resource path="res://src/mobs/mob.gd" type="Script" id=2]
 [ext_resource path="res://fonts/open-sans.regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://art/ui/health-bar-over.png" type="Texture" id=6]
 [ext_resource path="res://art/ui/health-bar-progress.png" type="Texture" id=7]

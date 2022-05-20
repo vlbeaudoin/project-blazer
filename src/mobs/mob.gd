@@ -2,7 +2,7 @@ class_name mob_base
 extends KinematicBody2D
 
 ## VARS
-export var mob_type = "base"
+export var mob_type = "static"
 
 # References
 onready var screen_size = get_viewport_rect().size
@@ -54,7 +54,8 @@ func _ready():
 
 func _physics_process(delta):
 	health_bar.value = health
-	position.x -= 10 * delta
+	if mob_type != "static":
+		position.x -= 10 * delta
 	
 	
 #	if mob_navigation and mob_navigation.path:

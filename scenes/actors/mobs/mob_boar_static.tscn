@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://actors/mob/mob.gd" type="Script" id=2]
-[ext_resource path="res://fonts/open-sans.regular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://art/ui/health-bar-over.png" type="Texture" id=6]
-[ext_resource path="res://art/ui/health-bar-progress.png" type="Texture" id=7]
-[ext_resource path="res://art/ui/health-bar-under.png" type="Texture" id=8]
-[ext_resource path="res://art/Wild Animals/Fox/Fox_Run.png" type="Texture" id=9]
+[ext_resource path="res://src/mobs/mob.gd" type="Script" id=1]
+[ext_resource path="res://fonts/open-sans.regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://art/ui/health-bar-over.png" type="Texture" id=3]
+[ext_resource path="res://art/ui/health-bar-progress.png" type="Texture" id=4]
+[ext_resource path="res://art/Wild Animals/Boar/Boar_Run.png" type="Texture" id=5]
+[ext_resource path="res://art/ui/health-bar-under.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "run"
@@ -25,32 +25,30 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 4.92499
-height = 12.5129
+radius = 7.56517
+height = 10.452
 
 [sub_resource type="DynamicFont" id=3]
 size = 6
-font_data = ExtResource( 4 )
+font_data = ExtResource( 2 )
 
-[node name="mob" type="KinematicBody2D"]
+[node name="mob_boar_static" type="KinematicBody2D"]
 position = Vector2( 0, -0.052557 )
 collision_layer = 64
 collision_mask = 2147484944
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-mob_type = "fox"
-health = 3
 
 [node name="mob_navigation" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 9.47323, 3.75508 )
-scale = Vector2( 0.316405, 0.316405 )
-texture = ExtResource( 9 )
+position = Vector2( 8.07433, 5.1013 )
+scale = Vector2( 0.460773, 0.460773 )
+texture = ExtResource( 5 )
 hframes = 6
-frame = 5
+frame = 1
 region_rect = Rect2( 3, 8, 57, 28 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
@@ -58,7 +56,7 @@ autoplay = "run"
 anims/run = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 8.72178, 4.99884 )
+position = Vector2( 8.01266, 7.77502 )
 rotation = 1.57079
 shape = SubResource( 2 )
 
@@ -75,15 +73,15 @@ __meta__ = {
 }
 
 [node name="health_bar" type="TextureProgress" parent="."]
-margin_left = -0.341082
-margin_top = -4.21402
-margin_right = 27.6589
-margin_bottom = 1.78598
+margin_left = -0.799931
+margin_top = -4.11417
+margin_right = 27.2001
+margin_bottom = 1.88583
 rect_scale = Vector2( 0.6, 0.6 )
 value = 50.0
-texture_under = ExtResource( 8 )
-texture_over = ExtResource( 6 )
-texture_progress = ExtResource( 7 )
+texture_under = ExtResource( 6 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
