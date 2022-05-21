@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
-const DEBUG = true
+const DEBUG = false
 onready var debug_label = get_tree().get_nodes_in_group("debug_label")[0]
 
 onready var sprite = $Sprite
-#onready var animation_player = $Sprite/AnimationPlayer
+onready var animation_player = $AnimationPlayer
+onready var hurtbox = $Sprite/hurtbox as Area2D
 
 enum {
 	IDLE,
@@ -22,9 +23,9 @@ var input = Vector2()
 var direction
 
 export var attributes = {
-	"skill" : 5,
-	"stamina" : 5,
-	"luck" : 5,
+	"skill" : 1,
+	"stamina" : 1,
+	"luck" : 1,
 	"speed" : 100.0,
 	"friction" : 0.25,
 	"acceleration" : 0.1,
@@ -37,19 +38,19 @@ func enter_state(new_state):
 	if state != new_state and !is_attacking:
 		if new_state == IDLE:
 			state = IDLE
-#			animation_player.play("idle")
+			animation_player.play("idle")
 		if new_state == RUN:
 			state = RUN
 #			animation_player.play("run")
 		if new_state == ATTACK:
 			is_attacking = true
 			state = ATTACK
-#			animation_player.play("attack")
+			animation_player.play("attack")
 
 
-func process_controls_input() -> void:
-	if Input.is_action_just_pressed("toggle_fullscreen"):
-		OS.window_fullscreen = !OS.window_fullscreen
+#func process_controls_input() -> void:
+#	if Input.is_action_just_pressed("toggle_fullscreen"):
+#		OS.window_fullscreen = !OS.window_fullscreen
 
 func get_input():
 	input = Vector2.ZERO
@@ -64,8 +65,8 @@ func get_input():
 	if Input.is_action_pressed("move_down"):
 		input.y += 1
 	
-#	if Input.is_action_pressed("attack"):
-#		process_attack()
+	if Input.is_action_pressed("attack"):
+		process_attack()
 	
 	return input
 
@@ -94,8 +95,10 @@ func process_look_direction():
 	if !is_attacking:
 		if input.x < 0:
 			is_looking_left = true
+			hurtbox.rotation_degrees = 180
 		if input.x > 0:
 			is_looking_left = false
+			hurtbox.rotation_degrees = 0
 		sprite.set_flip_h(is_looking_left)
 
 func process_debug_label():
@@ -119,11 +122,23 @@ func process_debug_label():
 		)
 
 func process_attack():
-	if is_looking_left:
-		sprite.position.x = -22
-	else:
-		sprite.position.x = 37
+#	if is_looking_left:
+#		sprite.position.x = -22
+#	else:
+#		sprite.position.x = 37
 	enter_state(ATTACK)
+
+func _on_body_entered(body):
+	var damage = 1 + attributes.skill
+
+	if "mob_type" in body:
+		# is a mob
+		if DEBUG:
+			print("Hitting %s for %d" % [body, damage])
+		body.hurt(damage)
+	else:
+		if DEBUG:
+			print("attacked something but not a mob")
 
 ## SETGET
 func set_attribute_acceleration(new_acceleration: float):
@@ -135,11 +150,12 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		is_attacking = false
 
 ## EXECUTION	
-#func _ready():
-#	animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+func _ready():
+	animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+	hurtbox.connect("body_entered", self, "_on_body_entered")
 	
 func _physics_process(_delta):
 	process_debug_label()
-	process_controls_input()
+#	process_controls_input()
 	process_look_direction()
 	process_movement()

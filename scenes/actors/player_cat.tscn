@@ -1,25 +1,56 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/player_cat.gd" type="Script" id=1]
 [ext_resource path="res://art/kevin_mushroom_cat/mush-cat-sprite.png" type="Texture" id=2]
 
+[sub_resource type="Animation" id=5]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("hurtbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("hurtbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="RayShape2D" id=7]
+
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 13.3333
+radius = 11.6666
 height = 6.66663
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 240, 136 )
 scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 1 )
-attributes = {
-"acceleration": 0.1,
-"friction": 0.25,
-"luck": 5,
-"max_velocity": 300,
-"skill": 5,
-"speed": 100.0,
-"stamina": 5
-}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
+autoplay = "idle"
+anims/attack = SubResource( 5 )
+anims/idle = SubResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -29,6 +60,16 @@ smoothing_speed = 10.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+
+[node name="hurtbox" type="Area2D" parent="Sprite"]
+collision_layer = 256
+collision_mask = 192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/hurtbox"]
+position = Vector2( 18.3331, 0 )
+rotation = -1.5708
+shape = SubResource( 7 )
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3.33337 )
