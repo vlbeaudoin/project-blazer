@@ -29,6 +29,16 @@ script = ExtResource( 6 )
 [node name="actors" type="Node2D" parent="."]
 
 [node name="Player" parent="actors" instance=ExtResource( 2 )]
+z_index = 1
+attributes = {
+"acceleration": 0.1,
+"friction": 0.25,
+"luck": 5,
+"max_velocity": 300,
+"skill": 5,
+"speed": 100.0,
+"stamina": 5
+}
 
 [node name="mobs" type="Node2D" parent="actors"]
 
