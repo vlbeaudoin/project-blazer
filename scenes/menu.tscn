@@ -41,3 +41,13 @@ text = "level2"
 script = ExtResource( 1 )
 level_name = "level2"
 level_path = "res://scenes/levels/level2.tscn"
+
+[node name="btn_level3" type="Button" parent="levels"]
+margin_left = 135.0
+margin_top = 142.0
+margin_right = 186.0
+margin_bottom = 162.0
+text = "level3"
+script = ExtResource( 1 )
+level_name = "level3"
+level_path = "res://scenes/levels/level3.tscn"
